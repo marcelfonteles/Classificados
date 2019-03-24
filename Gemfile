@@ -43,8 +43,9 @@ gem 'foreman'
 # Flexible authentication solution for Rails with Warden.
 gem 'devise'
 # Translations for the devise gem
-
 gem 'devise-i18n'
+
+gem 'awesome_print'
 
 
 

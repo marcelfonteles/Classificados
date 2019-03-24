@@ -26,7 +26,8 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
+  # Better Errors Config
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 

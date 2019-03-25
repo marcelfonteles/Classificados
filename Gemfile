@@ -64,6 +64,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Better error page for Rack apps 
   gem "better_errors"
+  # Rails ERD
+  gem 'rails-erd'
 end
 
 group :test do

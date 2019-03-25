@@ -1,3 +1,5 @@
 class Category < ApplicationRecord
-    validates :descriptio, uniquiness: true
+    has_many :ads
+ 
+
 end

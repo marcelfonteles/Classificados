@@ -44,7 +44,13 @@ gem 'foreman'
 gem 'devise'
 # Translations for the devise gem
 gem 'devise-i18n'
-
+# Bootstrap 4 rubygem for Rails / Sprockets / Hanami / etc 
+gem 'bootstrap', '~> 4.3.1'
+# A gem to automate using jQuery with Rails 
+gem 'jquery-rails'
+# Popper.js assets as a Ruby gem
+gem 'popper_js', '~> 1.14.5'
+#
 gem 'awesome_print'
 
 

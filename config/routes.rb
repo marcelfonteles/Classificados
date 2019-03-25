@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   namespace :backoffice do
     #get 'dashboard' => 'dashboard#index'
-    get 'dashboard', to: 'dashboard#index'
+    get '', to: 'dashboard#index'
   end
   
   devise_for :admins

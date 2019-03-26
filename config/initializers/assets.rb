@@ -17,4 +17,6 @@ Rails.application.config.assets.precompile += %w( admin.js
                                                   site.css
                                                   
                                                   backoffice.css 
-                                                  backoffice.js )
+                                                  backoffice.js 
+                                                  
+                                                  login.css )

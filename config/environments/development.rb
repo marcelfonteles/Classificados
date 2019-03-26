@@ -11,6 +11,12 @@ Rails.application.configure do
   
   # Foreman fix
   $stdout.sync = true
+  
+  # Better Errors Config
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+  
+  # WebConsole Rails
+  config.web_console.whitelisted_ips = ENV['TRUSTED_IP']
 
   # Show full error reports.
   config.consider_all_requests_local = true
@@ -29,8 +35,7 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-  # Better Errors Config
-  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+  
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 

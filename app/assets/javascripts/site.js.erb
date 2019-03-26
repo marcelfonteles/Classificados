@@ -1,0 +1,10 @@
+$(function(){
+    <% Category.all.each do |category| %>
+    $("#item-<%=category.id%>").mouseenter(function(){
+        $("#item-<%=category.id%>").addClass("active");
+    });
+    $("#item-<%=category.id%>").mouseleave(function(){
+        $("#item-<%=category.id%>").removeClass("active");
+    });
+    <% end %>
+})

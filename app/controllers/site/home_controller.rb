@@ -9,6 +9,7 @@ class Site::HomeController < ApplicationController
   end
   
   def example
+    @categories = Category.all
   end
   
 end

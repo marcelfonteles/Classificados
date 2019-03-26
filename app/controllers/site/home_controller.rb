@@ -7,4 +7,8 @@ class Site::HomeController < ApplicationController
   def index
     @categories = Category.all
   end
+  
+  def example
+  end
+  
 end

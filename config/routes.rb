@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'site/home#index'
   namespace :site do
     get 'home/index'
+    get 'example', to: 'home#example'
   end
   
   namespace :backoffice do

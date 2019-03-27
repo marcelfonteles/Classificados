@@ -27,3 +27,12 @@ categories.each do |category|
     Category.find_or_create_by(description: category)
 end
 puts 'Categorias cadastradas com sucesso.'
+
+count = 1
+20.times do
+   random = (rand * 15).to_i
+   price = (rand * 100).round(2)
+   Ad.find_or_create_by(title:'Item '+ count.to_s, description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!', category_id: random,
+                        member_id: 1, price: price, image:'sem imagem') 
+   count += 1
+end

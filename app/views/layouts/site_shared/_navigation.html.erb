@@ -7,19 +7,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Início
+                <li class="nav-item">
+                    <a id="inicio" class="nav-link" href="/">Início
               <span class="sr-only">(current)</span>
             </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/site/example">Example</a>
+                    <a id="example" class="nav-link" href="/site/example">Example</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a id="contact" class="nav-link" href="/">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <%= link_to member_session_path, class:'nav-link' do %>
+                    <%= link_to member_session_path, class:'nav-link', id:'login' do %>
                         Login
                         <% end %>
                 </li>

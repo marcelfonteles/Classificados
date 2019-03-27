@@ -7,4 +7,12 @@ $(function(){
         $("#item-<%=category.id%>").removeClass("active");
     });
     <% end %>
+    
+    $("#login").mouseenter(function(){
+        $("#login").addClass("btn-secondary rounded");
+    });
+    $("#login").mouseleave(function(){
+        $("#login").removeClass("btn-secondary rounded");
+    });
+
 })

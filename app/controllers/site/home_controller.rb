@@ -6,6 +6,7 @@ class Site::HomeController < ApplicationController
   
   def index
     @categories = Category.all
+    @ads = Ad.all.order('id DESC')
   end
   
   def example

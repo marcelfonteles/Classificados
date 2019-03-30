@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
+  namespace :backoffice do
+    get '', to: 'dashboard#index'
+    get 'categories', to: 'categories#index'
+  end
   root 'site/home#index'
   namespace :site do
     get 'home/index'
     get 'example', to: 'home#example'
-  end
-  
-  namespace :backoffice do
-    #get 'dashboard' => 'dashboard#index'
-    get '', to: 'dashboard#index'
   end
   
   devise_for :admins, controllers: {

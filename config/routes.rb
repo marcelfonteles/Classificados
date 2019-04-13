@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  root 'site/home#index'
+  
   namespace :backoffice do
     get '', to: 'dashboard#index'
     get 'categories', to: 'categories#index'
+    get 'category/new', to: 'categories#new'
+    post 'category/create', to: 'categories#create'
   end
-  root 'site/home#index'
+  
   namespace :site do
     get 'home/index'
     get 'example', to: 'home#example'

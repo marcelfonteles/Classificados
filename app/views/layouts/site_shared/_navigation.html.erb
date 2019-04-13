@@ -29,6 +29,13 @@
                             <% end %>
                     </li>
                 <% end %>
+                <% if admin_signed_in? %>
+                  <li>
+                    <%= link_to backoffice_path, class:'nav-link' do %>
+                      Dashboard
+                    <% end %>
+                  </li>
+                <% end %>
             </ul>
         </div>
     </div>

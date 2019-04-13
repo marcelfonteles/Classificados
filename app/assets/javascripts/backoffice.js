@@ -1,3 +1,4 @@
+/*
 $(function(){
     $("#botao-nova-categoria").click(function(){
         if ($("#nova-categoria").text().length == 0) {
@@ -18,3 +19,4 @@ $(function(){
     });
     
 })
+*/

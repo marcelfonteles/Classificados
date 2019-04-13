@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :site do
     get 'home/index'
     get 'example', to: 'home#example'
+    get 'ad/:id', to: 'home#ad'
   end
   
   devise_for :admins, controllers: {

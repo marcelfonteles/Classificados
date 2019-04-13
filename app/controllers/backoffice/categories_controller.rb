@@ -24,8 +24,15 @@ class Backoffice::CategoriesController < ApplicationController
           render new
         end
       }
+      format.js {
+        @category = Category.new(category_params)
+        if @category.save
+          flash[:notice] = "Categoria salva com sucesso"
+        else
+          flash[:notice] = "Não foi possível salvar a categoria"
+        end
+      }
     end
-   # format.js
   end
   
   private

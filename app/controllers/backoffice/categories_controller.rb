@@ -35,6 +35,11 @@ class Backoffice::CategoriesController < ApplicationController
     end
   end
   
+  def list_ads
+    @category = Category.find(params[:id])
+    @ads = @category.ads
+  end
+  
   private
   
   def category_params

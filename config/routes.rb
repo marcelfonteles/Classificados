@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'categories', to: 'categories#index'
     get 'category/new', to: 'categories#new'
     post 'category/create', to: 'categories#create'
+    get 'category/:id/', to: 'categories#list_ads', as: 'category_ads'
   end
   
   namespace :site do

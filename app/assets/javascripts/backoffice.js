@@ -20,3 +20,12 @@ $(function(){
     
 })
 */
+
+$(function(){
+    $("#botao-nova-categoria-js").click(function(){
+        $("#nova-categoria").removeClass("d-none");
+    });
+    $("#submit-button").click(function(){
+        $("#nova-categoria").addClass("d-none");
+    })
+})

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'home/index'
     get 'example', to: 'home#example'
     get 'ad/:id', to: 'home#ad'
+    get 'category/:category_id', to: 'home#ad_by_category'
   end
   
   devise_for :admins, controllers: {

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     get 'category/:category_id', to: 'home#ad_by_category'
   end
   
+  namespace :members do
+    get 'index', to: 'members#index'
+  end
+  
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }

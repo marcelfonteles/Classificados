@@ -12,13 +12,16 @@ Rails.application.routes.draw do
   namespace :site do
     get 'home/index'
     get 'example', to: 'home#example'
-    get 'ad/:id', to: 'home#ad'
+    get 'ad/:id', to: 'home#ad', as: 'ad'
     get 'category/:category_id', to: 'home#ad_by_category'
   end
   
   namespace :members do
     get 'index', to: 'members#index'
+    get '', to: 'members#index'
   end
+  
+  get '/members/new-ad', to: 'site/ads#new_ad', as: 'new_ad'
   
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'

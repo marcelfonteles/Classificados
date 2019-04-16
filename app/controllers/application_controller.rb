@@ -1,7 +1,14 @@
 class ApplicationController < ActionController::Base
+    # Método para listar todas as categorias, usado na barra lateral de categorias
+    def list_categories
+        @categories = Category.all
+    end
+    
+    # Método para mostrar todas as compras de um usuário
     def purchases
     end
     
+    # Método para definir os 5 últimos anúncios visualizados
     def visualization(ad_id)
         @views = View.where(member_id: current_member)
         if @views.count < 5

@@ -27,8 +27,4 @@ class Site::HomeController < ApplicationController
     @ad = Ad.find(params[:id])
   end
   
-  def list_categories
-    @categories = Category.all
-  end
-  
 end

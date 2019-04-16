@@ -34,6 +34,6 @@ count = 1
    random = (rand * 15).to_i
    price = (rand * 100).round(2)
    Ad.find_or_create_by(title:'Item '+ count.to_s, description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!', category_id: random,
-                        member_id: 1, price: price, image:'sem imagem') 
+                        member_id: (rand+1).round(), price: price, image:'sem imagem') 
    count += 1
 end

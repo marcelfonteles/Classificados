@@ -19,8 +19,14 @@
                     <a id="contact" class="nav-link" href="/">Contact</a>
                 </li>
                 <% if member_signed_in? %>
-                    <li class="nav-item">
-                        <a class="nav-link" data-method="delete" data-confirm="Tem certeza que deseja sair?" href="/members/sign_out">Logout</a>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Usuário
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/members/index">Minha Conta</a>
+                        <a class="dropdown-item" href="/members/sign_out" data-method="delete" data-confirm='Tem certeza que deseja sair?'>Logout</a>
+                      </div>
                     </li>
                 <% else %>
                     <li class="nav-item">

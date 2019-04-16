@@ -1,15 +1,87 @@
-<%= render 'layouts/site_shared/navigation' %>
+
 
 <div class="container">
-  <div class='col-lg-3'>
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/profile-image.jpg" alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <div class="row">
+    <div class='col-lg-3'>
+      <div class="card my-4" style="">
+        <img class="card-img-top" src="/profile-image.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"><b>Nome:</b> <%= @member.name%> <%= @member.surname%> <br>
+          <b>Data de nascimento: </b><%= @member.birthday.strftime('%d/%m/%Y') %>
+          <% if @member.sex == 'M' %>
+            <b>Sexo:</b> Masculino <br>
+          <% else %>
+            <b>Sexo:</b> Feminino <br>
+          <% end %>
+          <b>Membro desde:</b> <%= @member.created_at.strftime('%d/%m/%Y')%>
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class='col-lg-9'>
+      <div class='my-4'>
+        <h2>Histórico de Compras</h2>
+        <div class='row'>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Item One</a>
+                </h4>
+                <h5>$24.99</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">★ ★ ★ ★ ☆</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class='my-4'>
+        <h2>Últimos anuncios visualizados</h2>
+        <div class='row'>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Item One</a>
+                </h4>
+                <h5>$24.99</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">★ ★ ★ ★ ☆</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='my-4'>
+        <h2>Seus anuncios</h2>
+        <div class='row'>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Item One</a>
+                </h4>
+                <h5>$24.99</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">★ ★ ★ ★ ☆</small>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-
-<%= render 'layouts/site_shared/footer' %>

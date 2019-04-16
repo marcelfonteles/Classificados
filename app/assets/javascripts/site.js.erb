@@ -1,4 +1,4 @@
-$(function(){
+document.addEventListener("turbolinks:load", function() {
     <% Category.all.each do |category| %>
     $("#item-<%=category.id%>").mouseenter(function(){
         $("#item-<%=category.id%>").addClass("active");

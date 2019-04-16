@@ -26,6 +26,7 @@ categories = [ 'Eletrodomésticos',
 categories.each do |category|
     Category.find_or_create_by(description: category)
 end
+
 puts 'Categorias cadastradas com sucesso.'
 
 count = 1

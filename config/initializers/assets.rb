@@ -14,8 +14,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( admin.css
                                                   site.css
                                                   backoffice.css 
-                                                  login.css )
+                                                  login.css
+                                                  slider.css )
 
 Rails.application.config.assets.precompile += %w( admin.js
                                                   backoffice.js
-                                                  site.js)
+                                                  site.js
+                                                  slider.js )

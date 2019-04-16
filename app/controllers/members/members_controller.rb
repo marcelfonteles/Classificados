@@ -3,5 +3,6 @@ class Members::MembersController < ApplicationController
     layout 'site'
     def index
         @member = current_member
+        @ads = Ad.all
     end
 end

@@ -14,6 +14,7 @@ class Site::HomeController < ApplicationController
   end
   
   def ad
+    visualization(params[:id])
   end
   
   def ad_by_category

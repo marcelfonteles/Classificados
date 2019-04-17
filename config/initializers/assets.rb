@@ -20,4 +20,5 @@ Rails.application.config.assets.precompile += %w( admin.css
 Rails.application.config.assets.precompile += %w( admin.js
                                                   backoffice.js
                                                   site.js
-                                                  slider.js )
+                                                  slider.js
+                                                  plugins/jquery-price-format )

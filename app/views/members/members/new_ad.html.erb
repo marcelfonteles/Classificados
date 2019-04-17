@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class='col-md-3'>
+      <div class="card my-4" style="">
+        <img class="card-img-top" src="/profile-image.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"><b>Nome:</b> <%= @member.name%> <%= @member.surname%> <br>
+          <b>Data de nascimento: </b><%= @member.birthday.strftime('%d/%m/%Y') %>
+          <% if @member.sex == 'M' %>
+            <b>Sexo:</b> Masculino <br>
+          <% else %>
+            <b>Sexo:</b> Feminino <br>
+          <% end %>
+          <b>Membro desde:</b> <%= @member.created_at.strftime('%d/%m/%Y')%>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-9'>
+      <div class='my-4'>
+        <h2>Novo Anúncio</h2>
+        <div class='row my-4'>
+          <%= form_for :ad, url: members_create_ad_path(@ad) do |f| %>
+            <div class='form-group'>
+              <div class='form-row'>
+                <div class='col-md-3'>
+                  <%= f.label :title, 'Título', class:'col-form-label font-weight-bold' %>
+                </div>
+                <div class='col'>
+                  <%= f.text_field :title, class:'form-control', size: 150 %>
+                </div>
+              </div>
+              <div class='form-row my-4'>
+                <div class='col-md-3'>
+                  <%= f.label :description, 'Descrição', class:'col-form-label font-weight-bold' %>
+                </div>
+                <div class='col'>
+                  <%= f.text_area :description, class:'form-control' %>
+                </div>
+              </div>
+              <div class='form-row my-4'>
+                <div class='col-md-3'>
+                  <%= f.label :price, 'Preço', class:'col-form-label font-weight-bold' %>
+                </div>
+                <div class='col'>
+                  <%= f.text_field :price, class:'form-control' %>
+                </div>
+              </div>
+              <div class='form-row my-4'>
+                <div class='col-md-3'>
+                  <%= f.label :category_id, 'Categoria', class:'col-form-label font-weight-bold' %>
+                </div>
+                <div class='col'>
+                  <%= f.select :category_id, @categories.collect { |category| [category.description, category.id] }%>
+                </div>
+              </div>
+            </div>
+            <%= f.submit 'Cadastrar Anúncio', class:'btn btn-primary', id:'submit-button'%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'plugins/jquery-price-format' %>
+<script>
+  document.addEventListener("turbolinks:load", function() {
+    $("#ad_category_id").addClass('form-control');
+    
+    $('#ad_price').priceFormat({
+      prefix: 'R$ ',
+      centsSeparator: ',',
+      thousandsSeparator: '.'
+    });
+    $("#submit-button").click(function(){
+      $('#ad_price').priceFormat({
+      prefix: '',
+      centsSeparator: '.',
+      thousandsSeparator: ','
+    });
+    })
+  })
+</script>

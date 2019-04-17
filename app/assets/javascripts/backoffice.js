@@ -21,7 +21,7 @@ $(function(){
 })
 */
 
-$(function(){
+document.addEventListener("turbolinks:load", function() {
     $("#botao-nova-categoria-js").click(function(){
         $("#nova-categoria").removeClass("d-none");
         $("#category_description").val("");

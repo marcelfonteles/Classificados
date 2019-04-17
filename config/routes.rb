@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   namespace :members do
     get 'index', to: 'members#index'
     get '', to: 'members#index'
+    get 'new-ad', to: 'members#new_ad', as: 'new_ad'
+    post 'create-ad', to: 'members#create_ad', as: 'create_ad'
   end
   
   get '/members/new-ad', to: 'site/ads#new_ad', as: 'new_ad'

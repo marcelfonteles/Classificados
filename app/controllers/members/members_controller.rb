@@ -17,6 +17,25 @@ class Members::MembersController < ApplicationController
         end
     end
     
+    def new_comment
+        @member = current_member
+        @ad_id = params[:ad_id]
+        @comment = Comment.new
+    end
+    
+    def create_comment
+        @comment = Comment.new(comments_params)
+        @comment.member_id = current_member.id
+        if @comment.save
+            flash[:notice] = 'Comentário salvo com sucesso'
+            redirect_to site_ad_path(@comment.ad_id)
+        else
+            flash[:notice] = 'Não foi possível salvar o comentário'
+            redirect_to redirect_to site_ad_path(@comment.ad_id)
+        end
+            
+    end
+    
     def new_ad
         @member = current_member
         @ad = Ad.new
@@ -55,5 +74,9 @@ class Members::MembersController < ApplicationController
     
     def ads_params
        params.require(:ad).permit(:title, :description, :category_id, :member_id, :price, :image)
+    end
+    
+    def comments_params
+        params.require(:comment).permit(:comment, :member_id, :ad_id, :comment_id)
     end
 end

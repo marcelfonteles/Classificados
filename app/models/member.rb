@@ -6,4 +6,6 @@ class Member < ApplicationRecord
   
   has_many :ads
   has_many :views
+  has_many :comments
+  
 end

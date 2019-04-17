@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     post 'create-ad', to: 'members#create_ad', as: 'create_ad'
     delete 'delete-ad/:ad_id', to:'members#destroy_ad', as: 'destroy_ad'
     get 'buying-ad/:ad_id', to: 'members#buy_ad', as: 'buy_ad'
+    get 'ad/:ad_id/comment', to: 'members#new_comment', as:'new_comment'
+    post 'ad/comment/new', to: 'members#create_comment', as: 'create_comment'
   end
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class='col-lg-3'>
+      <div class="card my-4" style="">
+        <img class="card-img-top" src="/profile-image.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"><b>Nome:</b> <%= @member.name%> <%= @member.surname%> <br>
+          <b>Data de nascimento: </b><%= @member.birthday.strftime('%d/%m/%Y') %>
+          <% if @member.sex == 'M' %>
+            <b>Sexo:</b> Masculino <br>
+          <% else %>
+            <b>Sexo:</b> Feminino <br>
+          <% end %>
+          <b>Membro desde:</b> <%= @member.created_at.strftime('%d/%m/%Y')%>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-lg-9'>
+      <div class='my-4'>
+        <h2>Novo Comentário</h2>
+        <div class='row'>
+          <%= form_for :comment, url: members_create_comment_path(@comment) do |f| %>
+            <%= f.text_area :comment, class:'form-control', size:'150x10' %><br>
+            <div class='d-none'>
+              <%= f.text_field :ad_id, value: @ad_id %>
+            </div>
+            <%= f.submit 'Comentar', class:'btn btn-primary'%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

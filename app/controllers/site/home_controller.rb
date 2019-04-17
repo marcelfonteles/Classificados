@@ -19,6 +19,7 @@ class Site::HomeController < ApplicationController
   
   def ad
     visualization(params[:id])
+    @member = Member.all
   end
   
   def ad_by_category

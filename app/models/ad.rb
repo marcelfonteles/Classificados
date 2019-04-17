@@ -10,4 +10,5 @@ class Ad < ApplicationRecord
   
   
   has_many :views, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

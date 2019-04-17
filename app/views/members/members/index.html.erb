@@ -81,7 +81,8 @@
                   <p class="card-text"><%= ad.description %></p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">★ ★ ★ ★ ☆</small>
+                  <small class="text-muted">★ ★ ★ ★ ☆</small><br>
+                  <small><%= link_to 'Apagar', members_destroy_ad_path(ad.id), method: :delete, class:'btn btn-danger btn-sm', data: {confirm: 'Tem certeza que deseja apagar este anúncio'}%></small>
                 </div>
               </div>
             </div>

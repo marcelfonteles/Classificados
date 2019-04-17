@@ -24,6 +24,22 @@ class Members::MembersController < ApplicationController
         end
     end
     
+    def destroy_ad
+        @ad = Ad.find(params[:ad_id])
+        if @ad.member_id == current_member.id
+            if @ad.destroy
+                flash[:noitce] = 'Anúncio apagado com sucesso'
+                redirect_to members_index_path
+            else
+                flash[:noitce] = 'Não foi posspível apagar o anúncio'
+                redirect_to members_index_path
+            end
+        else
+            flash[:noitce] = 'Esse anúncio não lhe pertence'
+            redirect_to members_index_path 
+        end
+    end
+    
     private
     
     def ads_params

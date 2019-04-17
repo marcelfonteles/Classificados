@@ -7,7 +7,11 @@ class Site::HomeController < ApplicationController
   layout 'site'
   
   def index
-    @ads = Ad.all.order('id DESC')
+    if member_signed_in?
+      @ads = Ad.all.where.not(member_id: current_member.id).order('id DESC')
+    else
+      @ads = Ad.all.order('id DESC')
+    end
   end
   
   def example

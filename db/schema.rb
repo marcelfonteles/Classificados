@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_234252) do
+ActiveRecord::Schema.define(version: 2019_04_17_005852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 2019_04_16_234252) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "member_id"
+    t.bigint "ad_id"
+    t.integer "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ad_id"], name: "index_comments_on_ad_id"
+    t.index ["member_id"], name: "index_comments_on_member_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "name"
     t.string "surname"
@@ -76,6 +87,8 @@ ActiveRecord::Schema.define(version: 2019_04_16_234252) do
 
   add_foreign_key "ads", "categories"
   add_foreign_key "ads", "members"
+  add_foreign_key "comments", "ads"
+  add_foreign_key "comments", "members"
   add_foreign_key "views", "ads"
   add_foreign_key "views", "members"
 end

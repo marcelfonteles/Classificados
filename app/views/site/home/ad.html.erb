@@ -14,6 +14,9 @@
             <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
             4.0 stars
           </div>
+          <%if @ad.member_id != current_member.id %>
+            <div class='card-footer'><%= link_to 'Comprar Item', members_buy_ad_path(@ad.id), class:'btn btn-success', data: {confirm: 'Tem certeza que deseja comprar este item?'}%></div>
+          <% end %>
         </div>
         <!-- /.card -->
 

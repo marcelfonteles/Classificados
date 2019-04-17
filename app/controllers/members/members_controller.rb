@@ -6,6 +6,17 @@ class Members::MembersController < ApplicationController
         @ads = Ad.all
     end
     
+    def buy_ad
+        @ad = Ad.find(params[:ad_id])
+        if current_member.id != @ad.member_id
+            @view = View.where(member_id: current_member.id, ad_id: @ad.id)
+            @view.update(type_view: '2')
+            redirect_to members_index_path
+        else
+            redirect_to members_index_path
+        end
+    end
+    
     def new_ad
         @member = current_member
         @ad = Ad.new

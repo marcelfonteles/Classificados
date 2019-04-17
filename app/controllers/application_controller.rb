@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
     end
     
     def verification_visualization(ad_id, views)
-        views.where(ad_id: ad_id).empty?
+        views.where(ad_id: ad_id, type_view:'1').empty?
     end
 end

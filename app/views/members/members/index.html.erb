@@ -24,16 +24,16 @@
       <div class='my-4'>
         <h2>Histórico de Compras</h2>
         <div class='row'>
-          <% @member.views.where(type_view:'2').each do |view| %>
+          <% @member.purchases.each do |purchase| %>
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
                 <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="/site/ad/<%= view.ad_id %>"><%= @ads.find(view.ad_id).title %></a>
+                    <a href="/site/ad/<%= purchase.ad_id %>"><%= @ads.find(purchase.ad_id).title %></a>
                   </h4>
-                  <h5>$ <%= @ads.find(view.ad_id).price %></h5>
-                  <p class="card-text"><%= @ads.find(view.ad_id).description %></p>
+                  <h5>$ <%= @ads.find(purchase.ad_id).price %></h5>
+                  <p class="card-text"><%= @ads.find(purchase.ad_id).description %></p>
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">★ ★ ★ ★ ☆</small>
@@ -47,7 +47,7 @@
       <div class='my-4'>
         <h2>Últimos anuncios visualizados</h2>
         <div class='row'>
-          <% @member.views.where(type_view:'1').each do |view| %>
+          <% @member.views.each do |view| %>
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
                 <a href=""><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>

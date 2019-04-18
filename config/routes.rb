@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get 'buying-ad/:ad_id', to: 'members#buy_ad', as: 'buy_ad'
     get 'ad/:ad_id/comment', to: 'members#new_comment', as:'new_comment'
     post 'ad/comment/new', to: 'members#create_comment', as: 'create_comment'
+    post 'ad/respond/new', to: 'members#create_respond', as: 'create_respond'
   end
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'

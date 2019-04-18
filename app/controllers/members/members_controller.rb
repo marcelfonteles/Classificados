@@ -29,6 +29,7 @@ class Members::MembersController < ApplicationController
             format.html {
                 @comment = Comment.new(comments_params)
                 @comment.member_id = current_member.id
+                @comment.comment_id = -1
                 if @comment.save
                     flash[:notice] = 'Comentário salvo com sucesso'
                     redirect_to site_ad_path(@comment.ad_id)
@@ -40,6 +41,7 @@ class Members::MembersController < ApplicationController
             format.js {
                 @comment = Comment.new(comments_params)
                 @comment.member_id = current_member.id
+                @comment.comment_id = -1
                 if @comment.save
                     flash[:notice] = 'Comentário salvo com sucesso'
                 else
@@ -47,7 +49,23 @@ class Members::MembersController < ApplicationController
                 end
             }
         end
-            
+    end
+    
+    def create_respond
+        respond_to do |format|
+            format.html {
+                
+            }
+            format.js {
+                @comment = Comment.new(comments_params)
+                @comment.member_id = current_member.id
+                if @comment.save
+                    flash[:notice] = 'Comentário salvo com sucesso'
+                else
+                    flash[:notice] = 'Não foi possível salvar o comentário'
+                end   
+            }
+        end
     end
     
     def new_ad

@@ -20,6 +20,8 @@ class Site::HomeController < ApplicationController
   def ad
     visualization(params[:id])
     @member = Member.all
+    @comments = Comment.all.where(ad_id: params[:id])
+    puts @comments
     @comment = Comment.new
   end
   

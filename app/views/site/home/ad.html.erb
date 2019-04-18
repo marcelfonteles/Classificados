@@ -26,11 +26,47 @@
           </div>
           <div class="card-body">
             <div id='comments'>
-              <% @ad.comments.each do |comment|%>
+              <% @ad.comments.where(comment_id: -1).each do |comment|%>
                 <p><%= comment.comment %></p>
                 <small class="text-muted">Commented by <% if current_member.id != comment.member_id %><%= @member.find(comment.member_id).name%> <%= @member.find(comment.member_id).surname%> <% else%> you <% end %> on <%= comment.created_at.strftime('%d/%m/%Y')%></small>
                 <br>
-                <button class='btn btn-success btn-sm'>Responder Comentário</button>
+                <%if !@ad.comments.where(comment_id: comment.id).empty? %>
+                  <div class='card'>
+                    <div class='card-header'>
+                      <b>Resposta(s)</b>
+                    </div>
+                <% end %>
+                <% @ad.comments.where(comment_id: comment.id).each do |respond| %>
+                    <div class='card-body'>
+                      <p><%= respond.comment %></p>
+                      <small class="text-muted">Responded by <% if current_member.id != comment.member_id %><%= @member.find(comment.member_id).name%> <%= @member.find(comment.member_id).surname%> <% else%> you <% end %> on <%= comment.created_at.strftime('%d/%m/%Y')%></small>
+                    </div>
+                  <hr>
+                <% end %>
+                <%if !@ad.comments.where(comment_id: comment.id).empty? %>
+                  </div>
+                <% end %>
+                <br>
+                <button class='btn btn-success btn-sm' id='responder-<%=comment.id%>'>Responder Comentário</button>
+                <div class='d-none' id='resposta-<%=comment.id%>'>
+                  <script>
+                    document.addEventListener("turbolinks:load", function() {
+                      $("#responder-<%=comment.id%>").click(function(){
+                        $("#resposta-<%=comment.id%>").removeClass("d-none");
+                      });
+                    })
+                  </script>
+                  <%= form_for :comment, url: members_create_respond_path, remote: true do |f| %>
+                    <%= f.label :comment, 'Resposta'%>
+                    <%= f.text_area :comment, class:'form-control'%>
+                    <p class='d-none'>
+                      <%= f.text_field :ad_id, value: @ad.id%>
+                      <%= f.text_field :comment_id, value: comment.id%>
+                    </p>
+                    <br>
+                    <%= f.submit 'Responder', class:'btn btn-success btn-sm'%>
+                  <% end %>
+                </div>
                 <hr>
               <% end %>
              </div>

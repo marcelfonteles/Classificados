@@ -16,12 +16,12 @@ document.addEventListener("turbolinks:load", function() {
     });
     
     $("#comment-button").click(function(){
-        $("#comments").append("<p>" + $("#comment_comment").val() + "</p>" +
+        $("#comments").append("<p>" + $("#comment-text").val() + "</p>" +
                               "<small class='text-muted'>Commented now by you</small>" +
                               "<hr>"
             );
         setTimeout(function() {
-            $("#comment_comment").val("");
+            $("#comment-text").val("");
         }, 10);
     });
 })

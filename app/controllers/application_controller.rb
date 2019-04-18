@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
         @views = View.where(member_id: current_member)
         if @views.count < 5
             if verification_visualization(ad_id, @views)
-                View.create(member_id: current_member.id, ad_id: ad_id, type_view:'1')
+                View.create(member_id: current_member.id, ad_id: ad_id)
             end
         else
             if verification_visualization(ad_id, @views)
@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
     end
     
     def verification_visualization(ad_id, views)
-        views.where(ad_id: ad_id, type_view:'1').empty?
+        views.where(ad_id: ad_id).empty?
     end
 end

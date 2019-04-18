@@ -9,8 +9,9 @@ class Members::MembersController < ApplicationController
     def buy_ad
         @ad = Ad.find(params[:ad_id])
         if current_member.id != @ad.member_id
-            @view = View.where(member_id: current_member.id, ad_id: @ad.id)
-            @view.update(type_view: '2')
+            # @view = View.where(member_id: current_member.id, ad_id: @ad.id)
+            # @view.update(type_view: '2')
+            Purchase.create(member_id: current_member.id, ad_id: @ad.id)
             redirect_to members_index_path
         else
             redirect_to members_index_path

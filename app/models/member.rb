@@ -5,7 +5,8 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :ads
-  has_many :views
+  has_many :views, dependent: :destroy
+  has_many :purchases, dependent: :destroy
   has_many :comments
   
 end

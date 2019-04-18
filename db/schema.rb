@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_005852) do
+ActiveRecord::Schema.define(version: 2019_04_18_003217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,12 +75,20 @@ ActiveRecord::Schema.define(version: 2019_04_17_005852) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.bigint "member_id"
+    t.bigint "ad_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ad_id"], name: "index_purchases_on_ad_id"
+    t.index ["member_id"], name: "index_purchases_on_member_id"
+  end
+
   create_table "views", force: :cascade do |t|
     t.bigint "member_id"
     t.bigint "ad_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type_view", limit: 1
     t.index ["ad_id"], name: "index_views_on_ad_id"
     t.index ["member_id"], name: "index_views_on_member_id"
   end
@@ -89,6 +97,8 @@ ActiveRecord::Schema.define(version: 2019_04_17_005852) do
   add_foreign_key "ads", "members"
   add_foreign_key "comments", "ads"
   add_foreign_key "comments", "members"
+  add_foreign_key "purchases", "ads"
+  add_foreign_key "purchases", "members"
   add_foreign_key "views", "ads"
   add_foreign_key "views", "members"
 end

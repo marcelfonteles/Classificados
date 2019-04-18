@@ -25,14 +25,27 @@ class Members::MembersController < ApplicationController
     end
     
     def create_comment
-        @comment = Comment.new(comments_params)
-        @comment.member_id = current_member.id
-        if @comment.save
-            flash[:notice] = 'Comentário salvo com sucesso'
-            redirect_to site_ad_path(@comment.ad_id)
-        else
-            flash[:notice] = 'Não foi possível salvar o comentário'
-            redirect_to redirect_to site_ad_path(@comment.ad_id)
+        respond_to do |format|
+            format.html {
+                @comment = Comment.new(comments_params)
+                @comment.member_id = current_member.id
+                if @comment.save
+                    flash[:notice] = 'Comentário salvo com sucesso'
+                    redirect_to site_ad_path(@comment.ad_id)
+                else
+                    flash[:notice] = 'Não foi possível salvar o comentário'
+                    redirect_to redirect_to site_ad_path(@comment.ad_id)
+                end
+            }
+            format.js {
+                @comment = Comment.new(comments_params)
+                @comment.member_id = current_member.id
+                if @comment.save
+                    flash[:notice] = 'Comentário salvo com sucesso'
+                else
+                    flash[:notice] = 'Não foi possível salvar o comentário'
+                end
+            }
         end
             
     end

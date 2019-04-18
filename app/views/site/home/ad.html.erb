@@ -25,13 +25,24 @@
             Comentários
           </div>
           <div class="card-body">
-            <% @ad.comments.each do |comment|%>
-              <p><%= comment.comment %></p>
-              <small class="text-muted">Posted by <%= @member.find(comment.member_id).name%> <%= @member.find(comment.member_id).surname%> on <%= @member.find(comment.member_id).created_at.strftime('%d/%m/%Y')%></small>
-              <hr>
-            <% end %>
-           
-            <a href="/members/ad/<%= @ad.id%>/comment" class="btn btn-success">Comentar</a>
+            <div id='comments'>
+              <% @ad.comments.each do |comment|%>
+                <p><%= comment.comment %></p>
+                <small class="text-muted">Commented by <% if current_member.id != comment.member_id %><%= @member.find(comment.member_id).name%> <%= @member.find(comment.member_id).surname%> <% else%> you <% end %> on <%= comment.created_at.strftime('%d/%m/%Y')%></small>
+                <hr>
+              <% end %>
+             </div>
+            <a href="/members/ad/<%= @ad.id%>/comment" class="btn btn-success">Comentar (HTML)</a>
+            <hr>
+            <div class='comment-section form-group'>
+              <%= form_for :comment, remote: true, url: members_create_comment_path  do |f| %>
+                <%= f.label :comment, 'Comentário', class:'form-group' %>
+                <%= f.text_area :comment, class:'form-control' %>
+                <p class='d-none'><%= f.text_field :ad_id, value: @ad.id %></p>
+                <br>
+                <%= f.submit 'Comentar', class:'btn btn-success', id:'comment-button'%>
+              <% end %>
+            </div>
           </div>
         </div>
         <!-- /.card -->

@@ -14,5 +14,14 @@ document.addEventListener("turbolinks:load", function() {
     $("#login").mouseleave(function(){
         $("#login").removeClass("btn-secondary rounded");
     });
-
+    
+    $("#comment-button").click(function(){
+        $("#comments").append("<p>" + $("#comment_comment").val() + "</p>" +
+                              "<small class='text-muted'>Commented now by you</small>" +
+                              "<hr>"
+            );
+        setTimeout(function() {
+            $("#comment_comment").val("");
+        }, 10);
+    });
 })
